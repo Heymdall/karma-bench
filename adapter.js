@@ -19,7 +19,7 @@
         var suites = [];
 
         suitesCfg.forEach(function (cfg) {
-            var suite = new global.__Benchmark___.Suite(cfg.name, cfg.options);
+            var suite = new global.Benchmark.Suite(cfg.name, cfg.options);
             cfg.suites.forEach(function (sCfg) {
                 suite.add(sCfg.name, sCfg.options);
             });
