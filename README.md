@@ -50,8 +50,6 @@ Chrome 51.0.2704 (Mac OS X 10.11.5)
   Array search: util.contains at 12635982 ops/sec (2.17x faster than Array.indexOf)
 ```
 
-See [`karma-benchmark-example`](https://github.com/lazd/karma-benchmark-example) for a full example.
-
 ### Timeouts
 
 As large suites of Benchmarks take a long time to run, you _may_ need to increase Karma's timeout from it's default of 60000.
