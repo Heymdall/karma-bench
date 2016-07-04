@@ -8,6 +8,11 @@
     global.suite = function (name, fn, options) {
         var suite = { name: name, options: options, suites: [] };
         global.benchmark = function (name, options) {
+            if (typeof options === 'function') {
+                options = {
+                    fn: options
+                };
+            }
             suite.suites.push({ name: name, options: options });
         };
         fn();
@@ -21,6 +26,12 @@
         suitesCfg.forEach(function (cfg) {
             var suite = new global.Benchmark.Suite(cfg.name, cfg.options);
             cfg.suites.forEach(function (sCfg) {
+                if (cfg.options && cfg.options.hasOwnProperty('setup')) {
+                    sCfg.options.setup = cfg.options.setup;
+                }
+                if (cfg.options && cfg.options.hasOwnProperty('teardown')) {
+                    sCfg.options.teardown = cfg.options.teardown;
+                }
                 suite.add(sCfg.name, sCfg.options);
             });
             suites.push(suite);
